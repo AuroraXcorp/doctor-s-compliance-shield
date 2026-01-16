@@ -172,7 +172,7 @@ const ContactFormSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-secondary" />
-                  <span>100% gratuito</span>
+                  <span>Consultoria especializada</span>
                 </div>
               </div>
             </div>

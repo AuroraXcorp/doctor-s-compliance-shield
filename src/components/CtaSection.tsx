@@ -32,7 +32,7 @@ const CtaSection = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
                 <Button variant="urgent" size="xl" className="group">
-                  Começar Teste Grátis de 7 Dias
+                  Começar Agora
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button variant="heroOutline" size="lg" className="gap-2">

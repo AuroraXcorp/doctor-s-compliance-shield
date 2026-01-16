@@ -41,7 +41,7 @@ const Header = () => {
               Entrar
             </Button>
             <Button variant="urgent" size="sm">
-              Começar Grátis
+              Começar Agora
             </Button>
           </div>
 
@@ -75,7 +75,7 @@ const Header = () => {
                   Entrar
                 </Button>
                 <Button variant="urgent" className="w-full">
-                  Começar Grátis
+                  Começar Agora
                 </Button>
               </div>
             </nav>
