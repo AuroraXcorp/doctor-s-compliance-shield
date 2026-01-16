@@ -205,12 +205,12 @@ const SolutionSection = () => {
                     <span className="text-primary-foreground/70">/mês</span>
                   </div>
                   <Button variant="urgent" size="lg" className="w-full group mb-4">
-                    Começar Teste Grátis
+                    Começar Agora
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
                   <div className="space-y-2 text-xs text-primary-foreground/60">
-                    <p>✓ 7 dias grátis para testar</p>
                     <p>✓ Sem taxa de adesão</p>
+                    <p>✓ Suporte especializado</p>
                     <p>✓ Cancele quando quiser</p>
                   </div>
                 </div>

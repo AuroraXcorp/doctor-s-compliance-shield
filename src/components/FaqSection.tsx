@@ -27,8 +27,8 @@ const faqs = [
     answer: "Nosso sistema atende tanto médicos autônomos quanto clínicas de todos os portes. Para clínicas, oferecemos planos com múltiplos usuários e relatórios consolidados.",
   },
   {
-    question: "Como funciona o período de teste grátis?",
-    answer: "Você tem 7 dias para testar todas as funcionalidades sem compromisso. Não pedimos cartão de crédito para iniciar o teste. Ao final, você decide se deseja continuar com um dos nossos planos.",
+    question: "Como funciona o suporte ao cliente?",
+    answer: "Oferecemos suporte humanizado por WhatsApp, email e telefone. Nossa equipe de especialistas está disponível para ajudar você com qualquer dúvida sobre emissão de notas ou configuração do sistema.",
   },
 ];
 
