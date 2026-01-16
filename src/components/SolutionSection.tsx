@@ -90,8 +90,17 @@ const SolutionSection = () => {
           ))}
         </div>
 
-        {/* Benefits + CTA */}
-        <div className="max-w-4xl mx-auto">
+        {/* Pricing Card */}
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-semibold mb-4">
+              INVESTIMENTO
+            </span>
+            <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+              Escolha o melhor plano para você
+            </h3>
+          </div>
+          
           <div className="p-8 lg:p-12 rounded-3xl gradient-hero shadow-glow">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Benefits List */}
@@ -109,25 +118,35 @@ const SolutionSection = () => {
                 </ul>
               </div>
 
-              {/* CTA */}
-              <div className="text-center lg:text-left">
-                <div className="p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20">
+              {/* Pricing CTA */}
+              <div className="text-center">
+                <div className="p-8 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20">
+                  <div className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold mb-4">
+                    MAIS POPULAR
+                  </div>
                   <p className="text-sm text-primary-foreground/70 mb-2">
-                    Oferta especial para médicos
+                    Plano Profissional
                   </p>
-                  <div className="mb-4">
-                    <span className="text-4xl font-display font-bold text-primary-foreground">
-                      R$ 89
+                  <div className="mb-2">
+                    <span className="text-lg text-primary-foreground/50 line-through">
+                      R$ 249
+                    </span>
+                  </div>
+                  <div className="mb-6">
+                    <span className="text-5xl font-display font-bold text-primary-foreground">
+                      R$ 149
                     </span>
                     <span className="text-primary-foreground/70">/mês</span>
                   </div>
-                  <Button variant="urgent" size="lg" className="w-full group">
+                  <Button variant="urgent" size="lg" className="w-full group mb-4">
                     Começar Teste Grátis
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>
-                  <p className="text-xs text-primary-foreground/60 mt-3">
-                    7 dias grátis • Cancele quando quiser
-                  </p>
+                  <div className="space-y-2 text-xs text-primary-foreground/60">
+                    <p>✓ 7 dias grátis para testar</p>
+                    <p>✓ Sem taxa de adesão</p>
+                    <p>✓ Cancele quando quiser</p>
+                  </div>
                 </div>
               </div>
             </div>
