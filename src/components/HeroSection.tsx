@@ -1,7 +1,62 @@
 import { Button } from "@/components/ui/button";
 import { Shield, AlertTriangle, ArrowRight } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+
+// Hook for counting animation
+const useCountUp = (end: number, duration: number = 2000, suffix: string = "") => {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStarted) {
+          setHasStarted(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(easeOutQuart * end));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [hasStarted, end, duration]);
+
+  return { count, ref };
+};
 
 const HeroSection = () => {
+  const stat1 = useCountUp(50, 2000);
+  const stat2 = useCountUp(72, 1800);
+  const stat3 = useCountUp(100, 2200);
+
   return (
     <section className="relative min-h-screen overflow-hidden gradient-hero">
       {/* Background Pattern */}
@@ -30,7 +85,7 @@ const HeroSection = () => {
               <span className="relative z-10">de Olho</span>
               <span className="absolute bottom-2 left-0 w-full h-3 bg-accent/40 -z-0" />
             </span>{" "}
-            em Você, Doutor(a)
+            em Você, Doutor
           </h1>
 
           <p className="text-xl md:text-2xl text-primary-foreground/85 mb-4 font-medium">
@@ -75,16 +130,22 @@ const HeroSection = () => {
         <div className="mt-16 max-w-3xl mx-auto">
           <div className="gradient-glass rounded-2xl p-6 shadow-lg animate-float">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-display font-bold text-primary">R$ 50mil</div>
+              <div ref={stat1.ref}>
+                <div className="text-3xl font-display font-bold text-primary">
+                  R$ {stat1.count}mil
+                </div>
                 <div className="text-sm text-muted-foreground">Multa máxima por infração</div>
               </div>
-              <div className="md:border-x border-border">
-                <div className="text-3xl font-display font-bold text-destructive">72h</div>
+              <div ref={stat2.ref} className="md:border-x border-border">
+                <div className="text-3xl font-display font-bold text-destructive">
+                  {stat2.count}h
+                </div>
                 <div className="text-sm text-muted-foreground">Prazo para regularização</div>
               </div>
-              <div>
-                <div className="text-3xl font-display font-bold text-secondary">100%</div>
+              <div ref={stat3.ref}>
+                <div className="text-3xl font-display font-bold text-secondary">
+                  {stat3.count}%
+                </div>
                 <div className="text-sm text-muted-foreground">Conformidade garantida</div>
               </div>
             </div>
