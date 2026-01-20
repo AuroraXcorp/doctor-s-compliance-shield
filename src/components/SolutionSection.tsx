@@ -7,8 +7,7 @@ import {
   Smartphone, 
   HeadphonesIcon,
   ArrowRight,
-  CheckCircle2,
-  Play
+  CheckCircle2
 } from "lucide-react";
 
 const features = [
@@ -107,37 +106,24 @@ const SolutionSection = () => {
             </p>
           </div>
 
-          {/* Video Container */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-card border border-border shadow-card group cursor-pointer">
-            <div className="absolute inset-0 gradient-hero opacity-90" />
-            
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-primary-foreground/20 rounded-full blur-xl scale-150 group-hover:scale-175 transition-transform duration-500" />
-                  <Button
-                    variant="ghost"
-                    size="lg"
-                    className="relative w-20 h-20 rounded-full bg-primary-foreground/90 hover:bg-primary-foreground text-primary shadow-glow group-hover:scale-110 transition-all duration-300"
-                  >
-                    <Play className="w-8 h-8 ml-1" fill="currentColor" />
-                  </Button>
-                </div>
-                
-                <p className="mt-6 text-primary-foreground font-medium text-lg">
-                  Clique para assistir
-                </p>
-                <p className="text-primary-foreground/70 text-sm mt-1">
-                  Duração: 2 minutos
-                </p>
-              </div>
-            </div>
-
-            <div className="absolute top-4 left-4 flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-primary-foreground text-xs font-medium">DEMO</span>
-            </div>
-          </div>
+        {/* Video Container */}
+        <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-card">
+          <div 
+            dangerouslySetInnerHTML={{
+              __html: `
+                <vturb-smartplayer id="vid-696fc565c9aefd66086df356" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+                <script type="text/javascript">
+                  if (!document.querySelector('script[src*="696fc565c9aefd66086df356"]')) {
+                    var s=document.createElement("script");
+                    s.src="https://scripts.converteai.net/8549a3e3-8815-4dc9-b6df-d2c2a6d77bb9/players/696fc565c9aefd66086df356/v4/player.js";
+                    s.async=true;
+                    document.head.appendChild(s);
+                  }
+                </script>
+              `
+            }}
+          />
+        </div>
 
           {/* Video Features */}
           <div className="grid md:grid-cols-3 gap-6 mt-8">
