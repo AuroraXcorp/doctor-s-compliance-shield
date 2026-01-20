@@ -9,6 +9,16 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+// Declare custom element for TypeScript
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'vturb-smartplayer': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & { id: string }, HTMLElement>;
+    }
+  }
+}
 
 const features = [
   {
@@ -52,6 +62,24 @@ const benefits = [
 ];
 
 const SolutionSection = () => {
+  const videoContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Check if script already exists
+    const existingScript = document.querySelector('script[src*="696fc565c9aefd66086df356"]');
+    if (existingScript) return;
+
+    // Create and load the video player script
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/8549a3e3-8815-4dc9-b6df-d2c2a6d77bb9/players/696fc565c9aefd66086df356/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup if needed
+    };
+  }, []);
+
   return (
     <section className="py-20 lg:py-28 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -107,21 +135,13 @@ const SolutionSection = () => {
           </div>
 
         {/* Video Container */}
-        <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-card">
-          <div 
-            dangerouslySetInnerHTML={{
-              __html: `
-                <vturb-smartplayer id="vid-696fc565c9aefd66086df356" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
-                <script type="text/javascript">
-                  if (!document.querySelector('script[src*="696fc565c9aefd66086df356"]')) {
-                    var s=document.createElement("script");
-                    s.src="https://scripts.converteai.net/8549a3e3-8815-4dc9-b6df-d2c2a6d77bb9/players/696fc565c9aefd66086df356/v4/player.js";
-                    s.async=true;
-                    document.head.appendChild(s);
-                  }
-                </script>
-              `
-            }}
+        <div 
+          ref={videoContainerRef}
+          className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-card"
+        >
+          <vturb-smartplayer 
+            id="vid-696fc565c9aefd66086df356" 
+            style={{ display: "block", margin: "0 auto", width: "100%" }}
           />
         </div>
 
