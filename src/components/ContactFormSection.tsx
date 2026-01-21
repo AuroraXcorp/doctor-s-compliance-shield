@@ -33,21 +33,8 @@ const ContactFormSection = () => {
     setFormData((prev) => ({ ...prev, phone: formatted }));
   };
 
-  const isFormValid = formData.name.trim() !== "" && 
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 
-    formData.phone.replace(/\D/g, "").length >= 10;
-
   const handleSubmitAndRedirect = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!isFormValid) {
-      toast({
-        title: "Preencha o formulário",
-        description: "Por favor, preencha todos os campos corretamente antes de continuar.",
-        variant: "destructive",
-      });
-      return;
-    }
 
     setIsSubmitting(true);
     
@@ -139,10 +126,10 @@ const ContactFormSection = () => {
 
               <Button
                 type="submit"
-                variant="urgent"
+                variant="hero"
                 size="lg"
                 className="w-full group gap-2"
-                disabled={isSubmitting || !isFormValid}
+                disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <>
