@@ -21,16 +21,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
+            <a href="#como-funciona" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
               Como Funciona
             </a>
-            <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
+            <a href="#contato" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
               Preços
             </a>
-            <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
+            <a href="#depoimentos" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
               Depoimentos
             </a>
-            <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
+            <a href="#faq" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium">
               FAQ
             </a>
           </nav>
@@ -66,16 +66,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-primary-foreground/10">
             <nav className="flex flex-col gap-4">
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
+              <a href="#como-funciona" onClick={() => setIsMenuOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
                 Como Funciona
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
+              <a href="#contato" onClick={() => setIsMenuOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
                 Preços
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
+              <a href="#depoimentos" onClick={() => setIsMenuOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
                 Depoimentos
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
+              <a href="#faq" onClick={() => setIsMenuOpen(false)} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors font-medium py-2">
                 FAQ
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-primary-foreground/10">
