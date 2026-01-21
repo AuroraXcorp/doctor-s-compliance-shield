@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle2, MessageCircle } from "lucide-react";
+import { CheckCircle2, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getWhatsAppUrl } from "./WhatsAppButton";
 
@@ -33,48 +33,13 @@ const ContactFormSection = () => {
     setFormData((prev) => ({ ...prev, phone: formatted }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast({
-        title: "Email inválido",
-        description: "Por favor, insira um email válido.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-    
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "" });
-    setIsSubmitting(false);
-  };
-
   const isFormValid = formData.name.trim() !== "" && 
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 
     formData.phone.replace(/\D/g, "").length >= 10;
 
-  const handleWhatsAppRedirect = () => {
+  const handleSubmitAndRedirect = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
     if (!isFormValid) {
       toast({
         title: "Preencha o formulário",
@@ -83,7 +48,24 @@ const ContactFormSection = () => {
       });
       return;
     }
+
+    setIsSubmitting(true);
+    
+    // Simulate sending data
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    
+    toast({
+      title: "Dados enviados!",
+      description: "Você será redirecionado para o WhatsApp...",
+    });
+    
+    // Delay before redirecting to WhatsApp
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    
     window.open(getWhatsAppUrl(), '_blank');
+    
+    setFormData({ name: "", email: "", phone: "" });
+    setIsSubmitting(false);
   };
 
   return (
@@ -106,7 +88,7 @@ const ContactFormSection = () => {
 
           {/* Form Card */}
           <div className="p-8 lg:p-10 rounded-3xl bg-card border border-border shadow-card">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmitAndRedirect} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-foreground font-medium">
                   Nome Completo
@@ -157,10 +139,10 @@ const ContactFormSection = () => {
 
               <Button
                 type="submit"
-                variant="hero"
+                variant="urgent"
                 size="lg"
-                className="w-full group"
-                disabled={isSubmitting}
+                className="w-full group gap-2"
+                disabled={isSubmitting || !isFormValid}
               >
                 {isSubmitting ? (
                   <>
@@ -169,22 +151,10 @@ const ContactFormSection = () => {
                   </>
                 ) : (
                   <>
-                    Enviar Dados
-                    <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                    <MessageCircle className="w-5 h-5" />
+                    Quero Ser Contatado
                   </>
                 )}
-              </Button>
-
-              <Button
-                type="button"
-                variant="urgent"
-                size="lg"
-                className="w-full group gap-2"
-                onClick={handleWhatsAppRedirect}
-                disabled={!isFormValid}
-              >
-                <MessageCircle className="w-5 h-5" />
-                Quero Ser Contatado
               </Button>
             </form>
 
