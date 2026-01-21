@@ -136,8 +136,9 @@ const SolutionSection = () => {
 
         {/* Video Container */}
         <div 
+          id="video-demo"
           ref={videoContainerRef}
-          className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-card"
+          className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-card scroll-mt-24"
         >
           <vturb-smartplayer 
             id="vid-696fc565c9aefd66086df356" 

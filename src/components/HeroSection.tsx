@@ -104,7 +104,13 @@ const HeroSection = () => {
               Quero Me Regularizar Agora
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button variant="heroOutline" size="lg">
+            <Button 
+              variant="heroOutline" 
+              size="lg"
+              onClick={() => {
+                document.getElementById('video-demo')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Ver Como Funciona
             </Button>
           </div>
