@@ -1,9 +1,14 @@
 import { MessageCircle } from "lucide-react";
 
+export const WHATSAPP_NUMBER = "554999013143";
+export const WHATSAPP_MESSAGE = "Oi, gostaria de saber mais sobre o NFS-e Médico e como posso me regularizar.";
+
+export const getWhatsAppUrl = () => {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+};
+
 const WhatsAppButton = () => {
-  const phoneNumber = "5511999999999"; // Substitua pelo número real
-  const message = encodeURIComponent("Olá! Gostaria de saber mais sobre o NFS-e Médico.");
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <a

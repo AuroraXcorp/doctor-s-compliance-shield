@@ -35,7 +35,14 @@ const CtaSection = () => {
                   Começar Agora
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <Button variant="heroOutline" size="lg" className="gap-2">
+                <Button 
+                  variant="heroOutline" 
+                  size="lg" 
+                  className="gap-2"
+                  onClick={() => {
+                    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
                   <Phone className="w-4 h-4" />
                   Falar com Consultor
                 </Button>

@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getWhatsAppUrl } from "./WhatsAppButton";
 
 const ContactFormSection = () => {
   const { toast } = useToast();
@@ -69,8 +70,24 @@ const ContactFormSection = () => {
     setIsSubmitting(false);
   };
 
+  const isFormValid = formData.name.trim() !== "" && 
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && 
+    formData.phone.replace(/\D/g, "").length >= 10;
+
+  const handleWhatsAppRedirect = () => {
+    if (!isFormValid) {
+      toast({
+        title: "Preencha o formulário",
+        description: "Por favor, preencha todos os campos corretamente antes de continuar.",
+        variant: "destructive",
+      });
+      return;
+    }
+    window.open(getWhatsAppUrl(), '_blank');
+  };
+
   return (
-    <section className="py-20 lg:py-28 bg-muted/50">
+    <section id="contact-form" className="py-20 lg:py-28 bg-muted/50 scroll-mt-24">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           {/* Section Header */}
@@ -152,10 +169,22 @@ const ContactFormSection = () => {
                   </>
                 ) : (
                   <>
-                    Quero Ser Contatado
+                    Enviar Dados
                     <Send className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </>
                 )}
+              </Button>
+
+              <Button
+                type="button"
+                variant="urgent"
+                size="lg"
+                className="w-full group gap-2"
+                onClick={handleWhatsAppRedirect}
+                disabled={!isFormValid}
+              >
+                <MessageCircle className="w-5 h-5" />
+                Quero Ser Contatado
               </Button>
             </form>
 
