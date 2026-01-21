@@ -37,10 +37,18 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="ghost" className="text-primary-foreground hover:bg-primary-foreground/10">
+            <Button 
+              variant="ghost" 
+              className="text-primary-foreground hover:bg-primary-foreground/10"
+              onClick={() => window.open('https://app.doctorcare.io', '_blank')}
+            >
               Entrar
             </Button>
-            <Button variant="urgent" size="sm">
+            <Button 
+              variant="urgent" 
+              size="sm"
+              onClick={() => window.open('https://buy.stripe.com/9B6aEX0YQdjp3zn07E4gg01', '_blank')}
+            >
               Começar Agora
             </Button>
           </div>
@@ -71,10 +79,18 @@ const Header = () => {
                 FAQ
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-primary-foreground/10">
-                <Button variant="heroOutline" className="w-full">
+                <Button 
+                  variant="heroOutline" 
+                  className="w-full"
+                  onClick={() => window.open('https://app.doctorcare.io', '_blank')}
+                >
                   Entrar
                 </Button>
-                <Button variant="urgent" className="w-full">
+                <Button 
+                  variant="urgent" 
+                  className="w-full"
+                  onClick={() => window.open('https://buy.stripe.com/9B6aEX0YQdjp3zn07E4gg01', '_blank')}
+                >
                   Começar Agora
                 </Button>
               </div>

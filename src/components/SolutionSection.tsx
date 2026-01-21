@@ -211,7 +211,12 @@ const SolutionSection = () => {
                     </span>
                     <span className="text-primary-foreground/70">/mês</span>
                   </div>
-                  <Button variant="urgent" size="lg" className="w-full group mb-4">
+                  <Button 
+                    variant="urgent" 
+                    size="lg" 
+                    className="w-full group mb-4"
+                    onClick={() => window.open('https://buy.stripe.com/9B6aEX0YQdjp3zn07E4gg01', '_blank')}
+                  >
                     Começar Agora
                     <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Button>

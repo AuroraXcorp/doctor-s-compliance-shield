@@ -100,7 +100,12 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button variant="urgent" size="xl" className="group">
+            <Button 
+              variant="urgent" 
+              size="xl" 
+              className="group"
+              onClick={() => window.open('https://buy.stripe.com/9B6aEX0YQdjp3zn07E4gg01', '_blank')}
+            >
               Quero Me Regularizar Agora
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>
